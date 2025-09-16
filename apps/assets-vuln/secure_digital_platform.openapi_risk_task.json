@@ -1,0 +1,840 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "secure_digital_platform",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "平台接口"
+    },
+    {
+      "name": "平台接口/安全任务"
+    }
+  ],
+  "paths": {
+    "/platform/risk_disposal_tasks": {
+      "get": {
+        "summary": "获得安全任务列表",
+        "x-apifox-folder": "平台接口/安全任务",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/安全任务"
+        ],
+        "parameters": [
+          {
+            "name": "organize_id",
+            "in": "query",
+            "description": "部门id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "第几页",
+            "required": false,
+            "example": [],
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "每页多少个",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "任务标题",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priority",
+            "in": "query",
+            "description": "状态",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "处置状态",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "description": "处置动作",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "risk_disposal_task_id": {
+                                "type": "integer"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "priority": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "action": {
+                                "type": "string"
+                              },
+                              "assignee_id": {
+                                "type": "integer"
+                              },
+                              "carrier_id": {
+                                "type": "integer"
+                              },
+                              "component_id": {
+                                "type": "integer"
+                              },
+                              "solution": {
+                                "type": "string"
+                              },
+                              "repair_example": {
+                                "type": "string"
+                              },
+                              "cri_reduction": {
+                                "type": "number"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              },
+                              "issue_count": {
+                                "type": "integer"
+                              },
+                              "assignee_name": {
+                                "type": "string"
+                              },
+                              "assignee_nick_name": {
+                                "type": "string"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "risk_disposal_task_id",
+                              "title",
+                              "priority",
+                              "status",
+                              "action",
+                              "assignee_id",
+                              "carrier_id",
+                              "component_id",
+                              "solution",
+                              "repair_example",
+                              "cri_reduction",
+                              "created_at",
+                              "updated_at",
+                              "issue_count",
+                              "assignee_name",
+                              "assignee_nick_name"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "list"
+                      ],
+                      "x-apifox-orders": [
+                        "total",
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-orders": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "total": 1,
+                        "list": [
+                          {
+                            "risk_disposal_task_id": 1,
+                            "title": "通过修改Kafka组件中的配置修复风险",
+                            "priority": "strongRecommend",
+                            "status": "pending",
+                            "action": "upgrade_version",
+                            "assignee_id": 1,
+                            "carrier_id": 1,
+                            "component_id": 1,
+                            "solution": "瞎胡处置",
+                            "repair_example": "照样修复",
+                            "cri_reduction": 0.1,
+                            "created_at": "2025-07-16T11:18:10.385971Z",
+                            "updated_at": "2025-07-16T11:18:10.385971Z",
+                            "issue_count": 0,
+                            "assignee_name": "wenying",
+                            "assignee_nick_name": "温莹"
+                          }
+                        ]
+                      },
+                      "code": 200
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-322966118-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/risk_disposal_tasks/{id}": {
+      "get": {
+        "summary": "获得安全任务详情",
+        "x-apifox-folder": "平台接口/安全任务",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/安全任务"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "risk_disposal_task_id": {
+                          "type": "integer"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "priority": {
+                          "type": "integer"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "action": {
+                          "type": "string"
+                        },
+                        "assignee_id": {
+                          "type": "integer"
+                        },
+                        "carrier_id": {
+                          "type": "integer"
+                        },
+                        "component_id": {
+                          "type": "integer"
+                        },
+                        "solution": {
+                          "type": "string"
+                        },
+                        "repair_example": {
+                          "type": "string"
+                        },
+                        "cri_reduction": {
+                          "type": "number"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "issues": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "issue_id": {
+                                "type": "integer"
+                              },
+                              "issue_owner_id": {
+                                "type": "string"
+                              },
+                              "issue_status": {
+                                "type": "string"
+                              },
+                              "issue_title": {
+                                "type": "string"
+                              },
+                              "issue_level": {
+                                "type": "string"
+                              },
+                              "issue_desc": {
+                                "type": "string"
+                              },
+                              "solution": {
+                                "type": "string"
+                              },
+                              "vuln_count": {
+                                "type": "integer"
+                              },
+                              "issue_unique_id": {
+                                "type": "string"
+                              },
+                              "close_at": {
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              },
+                              "discovery_at": {
+                                "type": "string"
+                              },
+                              "data_processor_id": {
+                                "type": "integer"
+                              },
+                              "vuln_link_reason": {
+                                "type": "string"
+                              },
+                              "solution_source": {
+                                "type": "string"
+                              },
+                              "desc_source": {
+                                "type": "string"
+                              },
+                              "intelligent_analysis_result": {
+                                "type": "string"
+                              },
+                              "intelligent_solution": {
+                                "type": "string"
+                              },
+                              "intelligent_code_example": {
+                                "type": "string"
+                              },
+                              "issue_owner_name": {
+                                "type": "string"
+                              },
+                              "issue_owner_nick_name": {
+                                "type": "string"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "issue_id",
+                              "issue_owner_id",
+                              "issue_status",
+                              "issue_title",
+                              "issue_level",
+                              "issue_desc",
+                              "solution",
+                              "vuln_count",
+                              "issue_unique_id",
+                              "close_at",
+                              "created_at",
+                              "updated_at",
+                              "discovery_at",
+                              "data_processor_id",
+                              "vuln_link_reason",
+                              "solution_source",
+                              "desc_source",
+                              "intelligent_analysis_result",
+                              "intelligent_solution",
+                              "intelligent_code_example",
+                              "issue_owner_name",
+                              "issue_owner_nick_name"
+                            ],
+                            "x-apifox-ignore-properties": []
+                          }
+                        },
+                        "assignee_name": {
+                          "type": "string"
+                        },
+                        "assignee_nick_name": {
+                          "type": "string"
+                        },
+                        "affected_carrier": {
+                          "type": "object",
+                          "properties": {
+                            "carrier_id": {
+                              "type": "integer"
+                            },
+                            "carrier_unique_id": {
+                              "type": "string"
+                            },
+                            "carrier_type": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            },
+                            "tags": {
+                              "type": "null"
+                            },
+                            "source": {
+                              "type": "string"
+                            },
+                            "protocol": {
+                              "type": "string"
+                            },
+                            "ip": {
+                              "type": "string"
+                            },
+                            "port": {
+                              "type": "integer"
+                            },
+                            "path": {
+                              "type": "string"
+                            },
+                            "domain": {
+                              "type": "string"
+                            },
+                            "internet_ip": {
+                              "type": "string"
+                            },
+                            "nat_ip": {
+                              "type": "string"
+                            },
+                            "internal_ip": {
+                              "type": "string"
+                            },
+                            "repo_namespace": {
+                              "type": "string"
+                            },
+                            "repo_name": {
+                              "type": "string"
+                            },
+                            "repo_url": {
+                              "type": "string"
+                            },
+                            "branch": {
+                              "type": "string"
+                            },
+                            "carrier_owner_id": {
+                              "type": "integer"
+                            },
+                            "issue_count": {
+                              "type": "integer"
+                            },
+                            "data_processor": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "carrier_id",
+                            "carrier_unique_id",
+                            "carrier_type",
+                            "name",
+                            "description",
+                            "created_at",
+                            "updated_at",
+                            "tags",
+                            "source",
+                            "protocol",
+                            "ip",
+                            "port",
+                            "path",
+                            "domain",
+                            "internet_ip",
+                            "nat_ip",
+                            "internal_ip",
+                            "repo_namespace",
+                            "repo_name",
+                            "repo_url",
+                            "branch",
+                            "carrier_owner_id",
+                            "issue_count",
+                            "data_processor"
+                          ],
+                          "x-apifox-orders": [
+                            "carrier_id",
+                            "carrier_unique_id",
+                            "carrier_type",
+                            "name",
+                            "description",
+                            "created_at",
+                            "updated_at",
+                            "tags",
+                            "source",
+                            "protocol",
+                            "ip",
+                            "port",
+                            "path",
+                            "domain",
+                            "internet_ip",
+                            "nat_ip",
+                            "internal_ip",
+                            "repo_namespace",
+                            "repo_name",
+                            "repo_url",
+                            "branch",
+                            "carrier_owner_id",
+                            "issue_count",
+                            "data_processor"
+                          ],
+                          "x-apifox-ignore-properties": []
+                        },
+                        "affected_component": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "risk_disposal_task_id",
+                        "title",
+                        "priority",
+                        "status",
+                        "action",
+                        "assignee_id",
+                        "carrier_id",
+                        "component_id",
+                        "solution",
+                        "repair_example",
+                        "cri_reduction",
+                        "created_at",
+                        "updated_at",
+                        "issues",
+                        "assignee_name",
+                        "assignee_nick_name",
+                        "affected_carrier",
+                        "affected_component"
+                      ],
+                      "x-apifox-orders": [
+                        "risk_disposal_task_id",
+                        "title",
+                        "priority",
+                        "status",
+                        "action",
+                        "assignee_id",
+                        "carrier_id",
+                        "component_id",
+                        "solution",
+                        "repair_example",
+                        "cri_reduction",
+                        "created_at",
+                        "updated_at",
+                        "issues",
+                        "assignee_name",
+                        "assignee_nick_name",
+                        "affected_carrier",
+                        "affected_component"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-orders": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "risk_disposal_task_id": 1,
+                        "title": "通过修改Kafka组件中的配置修复风险",
+                        "priority": 1,
+                        "status": "pending",
+                        "action": "upgrade_version",
+                        "assignee_id": 1,
+                        "carrier_id": 11121,
+                        "component_id": 1,
+                        "solution": "瞎胡处置",
+                        "repair_example": "照样修复",
+                        "cri_reduction": 0.1,
+                        "created_at": "2025-07-16T11:18:10.385971Z",
+                        "updated_at": "2025-07-16T11:18:10.385971Z",
+                        "issues": [
+                          {
+                            "issue_id": 2,
+                            "issue_owner_id": "0",
+                            "issue_status": "open",
+                            "issue_title": "http://10.50.30.25:8080/api/config/update存在Command Injection漏洞",
+                            "issue_level": "critical",
+                            "issue_desc": "应用程序将用户提交的数据作为参数传递给系统命令执行函数，且未对数据进行适当的清理或过滤。",
+                            "solution": "避免在应用代码中执行外部命令。如果确需执行，应使用专门的API，并对所有用户输入进行严格的白名单校验，绝不允许用户直接控制命令及其参数。考虑使用沙箱环境。",
+                            "vuln_count": 1,
+                            "issue_unique_id": "94dab119-653b-46ce-b9d6-6edd9ed18ca9",
+                            "close_at": "0001-01-01T00:00:00Z",
+                            "created_at": "2025-05-07T15:10:15.617429Z",
+                            "updated_at": "2025-05-07T15:10:15.61743Z",
+                            "discovery_at": "2023-11-15T09:45:12Z",
+                            "data_processor_id": 0,
+                            "vuln_link_reason": "",
+                            "solution_source": "",
+                            "desc_source": "",
+                            "intelligent_analysis_result": "",
+                            "intelligent_solution": "",
+                            "intelligent_code_example": "",
+                            "issue_owner_name": "",
+                            "issue_owner_nick_name": ""
+                          }
+                        ],
+                        "assignee_name": "wenying",
+                        "assignee_nick_name": "温莹",
+                        "affected_carrier": {
+                          "carrier_id": 11121,
+                          "carrier_unique_id": "4a5c9b43-d3e0-4ed3-968f-bf7bb95b384c",
+                          "carrier_type": "code_repo",
+                          "name": "git.mfsec.cn/billing/integration/core",
+                          "description": "AI服务计费集成模块核心代码库",
+                          "created_at": "2023-10-26T10:00:00Z",
+                          "updated_at": "2023-10-26T10:00:00Z",
+                          "tags": null,
+                          "source": "gitlab",
+                          "protocol": "",
+                          "ip": "",
+                          "port": 0,
+                          "path": "",
+                          "domain": "",
+                          "internet_ip": "",
+                          "nat_ip": "",
+                          "internal_ip": "",
+                          "repo_namespace": "billing/integration",
+                          "repo_name": "core",
+                          "repo_url": "https://git.mfsec.cn/billing/integration/core.git",
+                          "branch": "main",
+                          "carrier_owner_id": 0,
+                          "issue_count": 0,
+                          "data_processor": 0
+                        },
+                        "affected_component": null
+                      },
+                      "code": 200
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-322996090-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/risk_disposal_tasks/update_status": {
+      "put": {
+        "summary": "更新安全任务状态",
+        "x-apifox-folder": "平台接口/安全任务",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/安全任务"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-322996477-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/risk_disposal_tasks/update_assignee": {
+      "put": {
+        "summary": "更新安全任务负责人",
+        "x-apifox-folder": "平台接口/安全任务",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/安全任务"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-322996638-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": []
+}

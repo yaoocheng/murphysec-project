@@ -1,0 +1,229 @@
+<template>
+    <div class="filter_wrap">
+        <div>
+            <SearchComp style="width: 240px;" v-model="filterOptions.keyword" clearable placeholder="请搜索MPS/CVE编号" />
+            <SelectComp style="width: 140px;" v-model="filterOptions.level" :options="levelOption" placeholder="漏洞级别" />
+            <el-select filterable style="margin-right: 8px; width: 140px;" v-model="filterOptions.team_id"
+                       placeholder="请选择团队">
+                <el-option v-for="item in store.teamList" :key="item.id" :label="item.team_name" :value="item.id" />
+            </el-select>
+            <el-button @click="resetHandle" class="minor_btn">重置</el-button>
+        </div>
+
+        <!-- <div v-if="userRole !== 'SAU'">
+            <el-popconfirm popper-class="cancle-popper confirm-popper" v-if="selectData.length" title="确认删除？"
+                @confirm="deleteStrategyList(selectData.map((item) => item.id))">
+                <template #reference>
+                    <el-button class="minor_btn">删除 {{ selectData.length || '' }}</el-button>
+                </template>
+            </el-popconfirm>
+            <el-button @click="isAddModal = true;">添加</el-button>
+        </div> -->
+    </div>
+
+    <div class="g-f-14 g-color-3 g-mb-16 g-fw-400">
+        共 <span class="g-color-1">{{ listData.length }}</span> 条数据
+    </div>
+
+    <div class="table_wrap">
+        <el-table :data="listData" height="100%"  :cell-style="{ height: '48px' }"
+                  :header-cell-style="{ padding: '15px 0', border: 'none', background: '#F7F8FB', color: '#8F959E', fontWeight: 500 }">
+            <el-table-column label="漏洞标题" prop="name" width="302" show-overflow-tooltip>
+                <template #default="scope">
+                    {{ scope.row.title || '暂未收录该漏洞' }}
+                </template>
+            </el-table-column>
+
+            <el-table-column label="漏洞级别">
+                <template #default="scope">
+                    <div v-if="scope.row.level" :style="{color: getDangerLevel(scope.row.level).color}">{{ getDangerLevel(scope.row.level).text }}</div>
+                    <div v-else>暂无</div>
+                </template>
+            </el-table-column>
+            <el-table-column label="CVE编号" width="160">
+                <template #default="scope">
+                    {{ scope.row.cve_id || '暂无'}}
+                </template>
+            </el-table-column>
+            <el-table-column label="MPS编号" width="160">
+                <template #default="scope">
+                    {{ scope.row.mps_id || '暂无' }}
+                </template>
+            </el-table-column>
+            <el-table-column label="漏洞类型" width="120">
+                <template #default="scope">
+                    {{ scope.row.kind || '暂无' }}
+                </template>
+            </el-table-column>
+            <el-table-column label="所属团队" width="140" prop="team_name" show-overflow-tooltip>
+                <template #default="scope">
+                    {{ scope.row.team_name || '-' }}
+                </template>
+            </el-table-column>
+            <el-table-column label="最近操作人" width="120">
+                <template #default="scope">
+                    <UserComp :name="scope.row.updated_user_name" />
+                </template>
+            </el-table-column>
+            <el-table-column label="最近操作时间" width="160">
+                <template #default="scope">
+                    {{ formatDate(scope.row.updated_at) }}
+                </template>
+            </el-table-column>
+            <el-table-column fixed="right" label="操作" width="60">
+                <template #default="scope">
+                    <div class="edit">
+                        <span v-if="scope.row.title" class="g-mr-8 g-color-5 button-text-blue">
+                            <a :href="generateVulnLink(scope.row.mps_id, scope.row.cve_id)" target="_blank">查看</a>
+                        </span>
+
+                        <!-- <el-popconfirm popper-class="cancle-popper confirm-popper"
+                            @confirm="deleteStrategyList([scope.row.id])" :title="`确认删除?`">
+                            <template #reference>
+                                <span style="color: #F34D3D;">删除</span>
+                            </template>
+                        </el-popconfirm> -->
+                    </div>
+                </template>
+            </el-table-column>
+        </el-table>
+
+        <!-- 分页 -->
+        <!-- <div class="pagination" v-if="total > 0">
+            <el-pagination v-model:currentPage="curPage" background small :page-size="20"
+                layout="total, prev, pager, next" :total="total">
+            </el-pagination>
+        </div> -->
+    </div>
+
+    <!-- <el-dialog v-model="isAddModal" @closed="formRef.resetFields()" width="664px" title="添加漏洞白名单">
+        <el-form ref="formRef" :model="form" label-position="top" :rules="formRules" label-width="auto">
+            <el-form-item class="g-mb-32" label="指定漏洞" prop="vulnId">
+                <el-input type="textarea" :rows="6" v-model="form.vulnId" placeholder="多个漏洞编号之间用回车隔开，例：
+CVE-2021-44906
+CVE-2023-45857
+CVE-2022-46175" />
+            </el-form-item>
+
+            <div class="group-btn">
+                <el-button @click="isAddModal = false; formRef.resetFields()">取消</el-button>
+                <el-button @click="confirmHandle(formRef)">保存</el-button>
+            </div>
+        </el-form>
+    </el-dialog> -->
+
+</template>
+
+<script setup lang='ts'>
+import { ref } from 'vue';
+import store from 'util/store';
+import useList from 'util/hook';
+import { formatDate, generateVulnLink, getDangerLevel } from 'util/tools';
+import { getVulnWhiteListApi } from 'api/set';
+import UserComp from 'comp/UserComp.vue';
+// import { UpOrgListApi } from 'api/org';
+import SelectComp from 'comp/SelectComp.vue';
+import { levelOption } from '../constants/constant';
+import SearchComp from '@/components/SearchComp.vue';
+// import { getOrgAuthInfo } from '@/control/org/hooks';
+
+// const selectData = ref<Array<any>>([]);
+// const { userRole } = getOrgAuthInfo();
+// const isAddModal = ref(false);
+
+// 筛选
+const filterOptions = ref<{
+    team_id: string,
+    keyword: string,
+    level: number | undefined,
+    page: 1,
+    limit: 1000,
+    list_type: 'child_team',
+}>({
+    team_id: store.teamInfo.team_id,
+    keyword: '',
+    level: undefined,
+    page: 1,
+    limit: 1000,
+    list_type: 'child_team',
+
+});
+const {
+    listData,
+} = useList(getVulnWhiteListApi, filterOptions);
+
+// const formRef = ref();
+// const form = reactive({
+//     vulnId: '',
+// });
+// const formRules = reactive({
+//     vulnId: [{
+//         required: true,
+//         message: '请输入漏洞编号',
+//         trigger: 'blur',
+//     }],
+// });
+
+const resetHandle = () => {
+    Object.assign(filterOptions.value, {
+        keyword: '',
+        level: undefined,
+        team_id: store.teamInfo.team_id,
+    });
+};
+
+// const confirmHandle = async (formEl: any) => {
+//     try {
+//         const isValid = await formEl.validate((valid:any) => valid);
+//         console.log(isValid);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+
+// 删除策略
+// const deleteStrategyList = async (ids: Array<string>) => {
+//     if (ids.length) {
+//         await projectStrategyDelApi({
+//             ids,
+//         });
+//         getData();
+//         showMessage('删除成功', 'success');
+//     }
+// };
+
+</script>
+
+<style lang='less' scoped>
+.title {
+    font-weight: 600;
+    color: @text-color;
+    margin-bottom: 8px;
+}
+
+.desc {
+    font-size: 14px;
+    color: #858585;
+    margin-bottom: 24px;
+}
+
+.filter_wrap {
+    margin-bottom: 16px;
+    .between();
+
+    .minor_btn {
+        height: 32px;
+        width: auto;
+    }
+}
+
+.table_wrap {
+    height: calc(100% - 85px);
+    // overflow: auto;
+
+    .edit {
+        color: #6c87ff;
+        cursor: pointer;
+    }
+}
+</style>

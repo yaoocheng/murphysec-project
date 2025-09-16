@@ -1,0 +1,1063 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "secure_digital_platform",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "平台接口"
+    },
+    {
+      "name": "平台接口/插件-newFix"
+    }
+  ],
+  "paths": {
+    "/platform/plug/add_built": {
+      "post": {
+        "summary": "新增内置插件",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "PlugBuilt",
+                "type": "object",
+                "properties": {
+                  "plug_name": {
+                    "type": "string",
+                    "description": "插件名称"
+                  },
+                  "plug_code": {
+                    "type": "string",
+                    "description": "插件代码"
+                  },
+                  "plug_type": {
+                    "type": "string",
+                    "description": "插件类型(config|code|common)"
+                  },
+                  "plug_data_type": {
+                    "type": "string",
+                    "description": "数据类型(SECURITY|DATA)"
+                  },
+                  "plug_desc": {
+                    "type": "string",
+                    "description": "插件描述"
+                  },
+                  "func_desc": {
+                    "type": "string",
+                    "description": "功能描述"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "标签"
+                  },
+                  "usage_guide": {
+                    "type": "string",
+                    "description": "使用说明"
+                  },
+                  "version": {
+                    "type": "string",
+                    "description": "版本"
+                  },
+                  "author": {
+                    "type": "string",
+                    "description": "作者"
+                  },
+                  "required_params_schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/requiredParamsSchema"
+                    },
+                    "description": "必填参数"
+                  }
+                },
+                "required": [
+                  "plug_name",
+                  "plug_code",
+                  "plug_type",
+                  "plug_data_type",
+                  "plug_desc",
+                  "func_desc",
+                  "tags",
+                  "usage_guide",
+                  "version",
+                  "author"
+                ],
+                "x-apifox-orders": [
+                  "plug_name",
+                  "plug_code",
+                  "plug_type",
+                  "plug_data_type",
+                  "plug_desc",
+                  "func_desc",
+                  "tags",
+                  "usage_guide",
+                  "version",
+                  "author",
+                  "required_params_schema"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "data",
+                    "code"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314412738-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/plug/add_mark": {
+      "post": {
+        "summary": "新增自定义插件",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "PlugBuilt",
+                "type": "object",
+                "properties": {
+                  "plug_mark_name": {
+                    "type": "string",
+                    "description": "插件名称"
+                  },
+                  "plug_code": {
+                    "type": "string",
+                    "description": "插件内容"
+                  },
+                  "plug_type": {
+                    "type": "string",
+                    "description": "插件类型(config|code|common)"
+                  },
+                  "plug_data_type": {
+                    "type": "string",
+                    "description": "数据类型(SECURITY|DATA)"
+                  },
+                  "plug_desc": {
+                    "type": "string",
+                    "description": "插件描述"
+                  },
+                  "func_desc": {
+                    "type": "string",
+                    "description": "功能描述"
+                  },
+                  "usage_guide": {
+                    "type": "string",
+                    "description": "使用说明"
+                  },
+                  "version": {
+                    "type": "string",
+                    "description": "版本"
+                  },
+                  "required_params_schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/requiredParamsSchema"
+                    },
+                    "description": "必填参数"
+                  },
+                  "plug_mark_id": {
+                    "type": "integer"
+                  },
+                  "plug_built_id": {
+                    "type": "integer",
+                    "description": "模版id"
+                  }
+                },
+                "required": [
+                  "plug_mark_name",
+                  "plug_code",
+                  "plug_type",
+                  "plug_data_type",
+                  "plug_desc",
+                  "func_desc",
+                  "usage_guide",
+                  "version"
+                ],
+                "x-apifox-orders": [
+                  "plug_mark_name",
+                  "plug_code",
+                  "plug_type",
+                  "plug_data_type",
+                  "plug_desc",
+                  "func_desc",
+                  "usage_guide",
+                  "version",
+                  "required_params_schema",
+                  "plug_mark_id",
+                  "plug_built_id"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "data",
+                    "code"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314412739-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/plug/built_all": {
+      "get": {
+        "summary": "获取所有内置插件",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "PlugBuilt",
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "x-apifox-refs": {
+                          "01JYP4YM0EQ52MK04J3B8VS2BY": {
+                            "$ref": "#/components/schemas/PlugData",
+                            "x-apifox-overrides": {
+                              "plug_mark_id": null
+                            }
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "01JYP4YM0EQ52MK04J3B8VS2BY"
+                        ],
+                        "properties": {
+                          "plug_name": {
+                            "type": "string",
+                            "description": "插件名称"
+                          },
+                          "plug_code": {
+                            "type": "string",
+                            "description": "插件内容"
+                          },
+                          "plug_type": {
+                            "type": "string",
+                            "description": "插件类型(config|code|common)"
+                          },
+                          "plug_data_type": {
+                            "type": "string",
+                            "description": "数据类型(SECURITY|DATA)"
+                          },
+                          "plug_desc": {
+                            "type": "string",
+                            "description": "插件描述"
+                          },
+                          "func_desc": {
+                            "type": "string",
+                            "description": "功能描述"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "标签"
+                          },
+                          "usage_guide": {
+                            "type": "string",
+                            "description": "使用说明"
+                          },
+                          "version": {
+                            "type": "string",
+                            "description": "版本"
+                          },
+                          "author": {
+                            "type": "string",
+                            "description": "作者"
+                          },
+                          "required_params_schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/requiredParamsSchema"
+                            },
+                            "description": "必填参数"
+                          },
+                          "plug_built_id": {
+                            "type": "integer"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "plug_name",
+                          "plug_code",
+                          "plug_type",
+                          "plug_data_type",
+                          "plug_desc",
+                          "func_desc",
+                          "tags",
+                          "usage_guide",
+                          "version",
+                          "author",
+                          "created_at",
+                          "updated_at"
+                        ],
+                        "x-apifox-ignore-properties": [
+                          "plug_name",
+                          "plug_code",
+                          "plug_type",
+                          "plug_data_type",
+                          "plug_desc",
+                          "func_desc",
+                          "tags",
+                          "usage_guide",
+                          "version",
+                          "author",
+                          "required_params_schema",
+                          "plug_built_id",
+                          "created_at",
+                          "updated_at"
+                        ]
+                      }
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "msg_en": {
+                      "type": "string"
+                    },
+                    "msg_zh": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-refs": {},
+                  "x-apifox-orders": [
+                    "data",
+                    "code",
+                    "msg_en",
+                    "msg_zh"
+                  ],
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314412742-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/plug/mark_all": {
+      "get": {
+        "summary": "获取所有自定义插件",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "x-apifox-refs": {
+                          "01JYP4ZV1CSK02JYRXXXTMHG1C": {
+                            "$ref": "#/components/schemas/PlugData",
+                            "x-apifox-overrides": {
+                              "plug_mark_id": null
+                            }
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "01JYP4ZV1CSK02JYRXXXTMHG1C"
+                        ],
+                        "properties": {
+                          "plug_name": {
+                            "type": "string",
+                            "description": "插件名称"
+                          },
+                          "plug_code": {
+                            "type": "string",
+                            "description": "插件内容"
+                          },
+                          "plug_type": {
+                            "type": "string",
+                            "description": "插件类型(config|code|common)"
+                          },
+                          "plug_data_type": {
+                            "type": "string",
+                            "description": "数据类型(SECURITY|DATA)"
+                          },
+                          "plug_desc": {
+                            "type": "string",
+                            "description": "插件描述"
+                          },
+                          "func_desc": {
+                            "type": "string",
+                            "description": "功能描述"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "标签"
+                          },
+                          "usage_guide": {
+                            "type": "string",
+                            "description": "使用说明"
+                          },
+                          "version": {
+                            "type": "string",
+                            "description": "版本"
+                          },
+                          "author": {
+                            "type": "string",
+                            "description": "作者"
+                          },
+                          "required_params_schema": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/requiredParamsSchema"
+                            },
+                            "description": "必填参数"
+                          },
+                          "plug_mark_id": {
+                            "type": "integer"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "plug_name",
+                          "plug_code",
+                          "plug_type",
+                          "plug_data_type",
+                          "plug_desc",
+                          "func_desc",
+                          "tags",
+                          "usage_guide",
+                          "version",
+                          "author",
+                          "created_at",
+                          "updated_at"
+                        ],
+                        "x-apifox-ignore-properties": [
+                          "plug_name",
+                          "plug_code",
+                          "plug_type",
+                          "plug_data_type",
+                          "plug_desc",
+                          "func_desc",
+                          "tags",
+                          "usage_guide",
+                          "version",
+                          "author",
+                          "required_params_schema",
+                          "plug_mark_id",
+                          "created_at",
+                          "updated_at"
+                        ]
+                      }
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-orders": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314412743-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/plug/mark": {
+      "delete": {
+        "summary": "删除自定义插件",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "自定义插件id",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314412744-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/plug/mark/{id}": {
+      "get": {
+        "summary": "删除自定义插件判断",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314412752-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/plug/test": {
+      "post": {
+        "summary": "插件测试",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-apifox-orders": [
+                  "plug_code"
+                ],
+                "properties": {
+                  "plug_code": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "plug_code"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "description": "沙箱返回内容",
+                      "x-apifox-ignore-properties": []
+                    },
+                    "code": {
+                      "type": "string",
+                      "x-apifox-mock": "200"
+                    },
+                    "msg_en": {
+                      "type": "string"
+                    },
+                    "msg_zh": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-refs": {},
+                  "x-apifox-orders": [
+                    "data",
+                    "code",
+                    "msg_en",
+                    "msg_zh"
+                  ],
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314424839-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/platform/plug/update_built": {
+      "post": {
+        "summary": "更新内置插件",
+        "x-apifox-folder": "平台接口/插件-newFix",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "平台接口/插件-newFix"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "PlugBuilt",
+                "type": "object",
+                "properties": {
+                  "plug_name": {
+                    "type": "string",
+                    "description": "插件名称"
+                  },
+                  "plug_code": {
+                    "type": "string",
+                    "description": "插件代码"
+                  },
+                  "plug_type": {
+                    "type": "string",
+                    "description": "插件类型(config|code|common)"
+                  },
+                  "plug_data_type": {
+                    "type": "string",
+                    "description": "数据类型(SECURITY|DATA)"
+                  },
+                  "plug_desc": {
+                    "type": "string",
+                    "description": "插件描述"
+                  },
+                  "func_desc": {
+                    "type": "string",
+                    "description": "功能描述"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "标签"
+                  },
+                  "usage_guide": {
+                    "type": "string",
+                    "description": "使用说明"
+                  },
+                  "version": {
+                    "type": "string",
+                    "description": "版本"
+                  },
+                  "author": {
+                    "type": "string",
+                    "description": "作者"
+                  },
+                  "required_params_schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/requiredParamsSchema"
+                    },
+                    "description": "必填参数"
+                  },
+                  "plug_id": {
+                    "type": "integer"
+                  },
+                  "plug_path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "plug_name",
+                  "plug_code",
+                  "plug_type",
+                  "plug_data_type",
+                  "plug_desc",
+                  "func_desc",
+                  "tags",
+                  "usage_guide",
+                  "version",
+                  "author",
+                  "plug_id",
+                  "plug_path"
+                ],
+                "x-apifox-orders": [
+                  "plug_name",
+                  "plug_code",
+                  "plug_type",
+                  "plug_data_type",
+                  "plug_desc",
+                  "func_desc",
+                  "tags",
+                  "usage_guide",
+                  "version",
+                  "author",
+                  "required_params_schema",
+                  "plug_id",
+                  "plug_path"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "data",
+                    "code"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/5254249/apis/api-314923340-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PlugData": {
+        "title": "PlugInfo",
+        "type": "object",
+        "properties": {
+          "plug_name": {
+            "type": "string",
+            "description": "插件名称"
+          },
+          "plug_code": {
+            "type": "string",
+            "description": "插件内容"
+          },
+          "plug_type": {
+            "type": "string",
+            "description": "插件类型(config|code|common)"
+          },
+          "plug_data_type": {
+            "type": "string",
+            "description": "数据类型(SECURITY|DATA)"
+          },
+          "plug_desc": {
+            "type": "string",
+            "description": "插件描述"
+          },
+          "func_desc": {
+            "type": "string",
+            "description": "功能描述"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "标签"
+          },
+          "usage_guide": {
+            "type": "string",
+            "description": "使用说明"
+          },
+          "version": {
+            "type": "string",
+            "description": "版本"
+          },
+          "author": {
+            "type": "string",
+            "description": "作者"
+          },
+          "required_params_schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/requiredParamsSchema"
+            },
+            "description": "必填参数"
+          },
+          "plug_built_id": {
+            "type": "integer"
+          },
+          "plug_mark_id": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "plug_name",
+          "plug_code",
+          "plug_type",
+          "plug_data_type",
+          "plug_desc",
+          "func_desc",
+          "tags",
+          "usage_guide",
+          "version",
+          "author",
+          "created_at",
+          "updated_at"
+        ],
+        "x-apifox-orders": [
+          "plug_name",
+          "plug_code",
+          "plug_type",
+          "plug_data_type",
+          "plug_desc",
+          "func_desc",
+          "tags",
+          "usage_guide",
+          "version",
+          "author",
+          "required_params_schema",
+          "plug_built_id",
+          "plug_mark_id",
+          "created_at",
+          "updated_at"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      },
+      "requiredParamsSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "必填参数",
+        "x-apifox-orders": [
+          "key",
+          "type",
+          "label",
+          "value"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "type",
+          "label",
+          "value"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": []
+}

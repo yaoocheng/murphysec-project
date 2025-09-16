@@ -1,0 +1,59 @@
+.base-transfer {
+    .ant-transfer-list {
+        .ant-transfer-list-search {
+            box-shadow: none !important;
+
+            .ant-input {
+                &::placeholder {
+                    color: #999999;
+                }
+
+                color: #3c3c3c;
+            }
+
+            .ant-input-prefix {
+                .anticon {
+                    color: #3c3c3c !important;
+                    width: 16px !important;
+                    height: 16px !important;
+
+                }
+
+                margin-right: 8px;
+            }
+
+            .ant-input-clear-icon {
+                color: #999999 !important;
+
+                &:hover {
+                    color: #666666 !important;
+                }
+            }
+        }
+    }
+
+    .ant-transfer-operation {
+
+        gap: 8px;
+
+        button {
+            color: rgba(204, 204, 204, 1);
+            border: none;
+            background-color: transparent;
+            box-shadow: none;
+
+            &:not(:disabled) {
+                color: rgba(60, 60, 60, 1);
+                background-color: transparent;
+
+                &:hover {
+                    background-color: rgba(242, 242, 242, 1);
+                }
+            }
+
+            div {
+                display: none;
+            }
+        }
+    }
+}

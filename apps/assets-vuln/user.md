@@ -1,0 +1,15 @@
+业务系统列表
+business_system/find_business_system
+
+应用列表
+application/list_application
+应用详情
+application/application_info?application_id=646
+
+数据导入
+安全问题
+issue/issue_prequalification_list
+应用
+data_preparation/application_list
+业务系统
+data_preparation/business_system_list

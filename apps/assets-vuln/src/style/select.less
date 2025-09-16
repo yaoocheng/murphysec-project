@@ -1,0 +1,364 @@
+// 对基础选择器组件的样式
+.base-select-dropdown {
+    width: 187px !important;
+    max-height: 280px !important;
+    overflow-y: auto !important;
+    border-radius: 6px !important;
+    padding: 8px 1px !important;
+    border: 1px solid #DEE0E3 !important;
+
+    .ant-select-item {
+        font-size: 14px !important;
+        height: 30px !important;
+        display: flex !important;
+        align-items: center !important;
+        border-radius: 0 !important;
+
+
+
+        .check-icon {
+            display: none !important;
+        }
+
+        .ant-select-item-option-state {
+            display: none !important;
+        }
+
+        &:hover {
+            background-color: #F2F2F2 !important;
+        }
+    }
+
+    &:not(.no-check-icon) {
+        .ant-select-item {
+            &.ant-select-item-option-selected {
+                background-color: transparent !important;
+                color: #6C87FF !important;
+                font-weight: 500 !important;
+
+                .check-icon {
+                    display: inline-block !important;
+                }
+            }
+
+        }
+    }
+}
+
+// 用户选择器组件的样式
+.user-select-dropdown {
+    width: 187px !important;
+    max-height: 280px !important;
+    overflow-y: auto !important;
+    border-radius: 6px !important;
+    padding: 8px 1px !important;
+    border: 1px solid #DEE0E3 !important;
+
+    .ant-select-item {
+        font-size: 14px !important;
+        height: 52px !important;
+        display: flex !important;
+        align-items: center !important;
+        border-radius: 0 !important;
+
+        .value {
+            display: none;
+        }
+
+        .check-icon {
+            display: none !important;
+        }
+
+        &:hover {
+            background-color: #F2F2F2 !important;
+        }
+    }
+
+    &:not(.no-check-icon) {
+        .ant-select-item {
+            &.ant-select-item-option-selected {
+                background-color: transparent !important;
+                color: #6C87FF !important;
+                font-weight: 500 !important;
+
+                .check-icon {
+                    display: inline-block !important;
+                }
+            }
+        }
+    }
+}
+
+.ant-select-selection-item,
+.ant-select-item-option-content {
+    .check-icon {
+        display: none !important;
+    }
+}
+
+// 安全能力类型选择器
+.security-capability-type-select {
+    &:extend(.base-select-dropdown all);
+    width: 240px !important;
+}
+
+/* 漏洞情报中选择器的下拉框样式 */
+.vuln-filter-popup,
+.notify_select_popup {
+    &:extend(.base-select-dropdown all);
+
+    .ant-select-item {
+        height: 32px !important;
+    }
+}
+
+.base-select.ant-select-disabled:hover {
+    border-color: #E6E6E6 !important;
+}
+
+.base-select {
+    .ant-select-selector {
+        box-shadow: none !important;
+
+        // &:hover {
+        //     border-color: #6C87FF !important;
+        // }
+    }
+
+    .ant-select-selection-placeholder {
+        color: #999999 !important;
+        font-size: 14px !important;
+    }
+
+    .ant-select-clear {
+        .anticon {
+            color: #999999 !important;
+
+            &:hover {
+                color: #666666 !important;
+            }
+        }
+    }
+
+    .ant-select-selection-item {
+        font-size: 14px !important;
+    }
+}
+
+// 用户选择器
+.user-select {
+    .ant-select-selector {
+        // border: 1px solid #E6E6E6 !important;
+        box-shadow: none !important;
+
+        &:hover {
+            border-color: #6C87FF !important;
+        }
+    }
+
+    .ant-select-selection-placeholder {
+        color: #999999 !important;
+        font-size: 14px !important;
+    }
+
+    .ant-select-clear {
+        .anticon {
+            color: #999999 !important;
+
+            &:hover {
+                color: #666666 !important;
+            }
+        }
+    }
+
+    .ant-select-selection-item {
+        font-size: 14px !important;
+
+        .choice {
+            display: none;
+        }
+
+    }
+}
+
+// 树选择器
+.base-tree-select {
+    .ant-select-selection-placeholder {
+        color: #999999;
+    }
+
+    .ant-select-selector {
+        box-shadow: none !important;
+    }
+}
+
+.base-tree-select-popup {
+    width: 500px !important;
+    padding: 8px 1px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0px 10px 36px 10px rgba(31, 35, 41, 0.04),
+        0px 8px 24px 0px rgba(31, 35, 41, 0.04),
+        0px 6px 12px -10px rgba(31, 35, 41, 0.06);
+
+    .ant-select-tree-list-holder-inner {
+        gap: 4px;
+    }
+
+    .ant-select-tree-treenode {
+        padding: 0 !important;
+        height: 32px;
+        align-items: center !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ant-select-tree-switcher {
+        display: flex;
+        margin-left: 8px !important;
+        align-items: center;
+        justify-items: center;
+        width: auto !important;
+
+        .ant-select-tree-switcher-icon {
+            font-size: 12px !important;
+            display: flex;
+            text-align: center;
+            padding: 2px;
+
+            &:hover {
+                background-color: #d9d9d9;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .ant-select-tree-treenode-selected {
+        width: 100%;
+
+        .ant-select-tree-node-content-wrapper {
+            background-color: transparent !important;
+
+            .ant-select-tree-title>div>span {
+                color: #6C87FF !important;
+            }
+        }
+    }
+
+    .ant-select-tree-node-content-wrapper:not(.ant-select-tree-node-selected) {
+        &:hover {
+            background-color: transparent !important;
+        }
+    }
+
+    .ant-select-tree-list-holder-inner {
+        gap: 4px;
+    }
+
+    .ant-select-tree-treenode:not(.ant-select-tree-treenode-selected) {
+        width: 100%;
+        // background-color: #F2F2F2 !important;
+
+        .ant-select-tree-node-content-wrapper {
+            background-color: transparent !important;
+
+            .ant-select-tree-title>div>svg {
+                display: none;
+            }
+        }
+
+        &:hover {
+            background-color: #F2F2F2 !important;
+        }
+    }
+}
+
+// Add hover background to tree select options
+.ant-select-tree-node-content-wrapper {
+    &:hover {
+        background-color: #f2f2f2; // 或者其他您喜欢的颜色
+    }
+}
+
+// 新封装组织懒加载下拉框
+.org-tree-select-popup {
+    width: 500px !important;
+    padding: 8px 1px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0px 10px 36px 10px rgba(31, 35, 41, 0.04),
+        0px 8px 24px 0px rgba(31, 35, 41, 0.04),
+        0px 6px 12px -10px rgba(31, 35, 41, 0.06);
+
+
+    .ant-select-tree-list-holder-inner {
+        gap: 4px;
+    }
+
+    .ant-select-tree-treenode {
+        padding: 0 !important;
+        height: 32px;
+        align-items: center !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ant-select-tree-switcher {
+        display: flex;
+        margin-left: 8px !important;
+        align-items: center;
+        justify-items: center;
+        width: auto !important;
+
+        .ant-select-tree-switcher-icon {
+            font-size: 12px !important;
+            display: flex;
+            text-align: center;
+            padding: 2px;
+
+            &:hover {
+                background-color: #d9d9d9;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .ant-select-tree-treenode-selected {
+        width: 100%;
+
+        .ant-select-tree-node-content-wrapper {
+            background-color: transparent !important;
+
+            .ant-select-tree-title>div>span {
+                color: #6C87FF !important;
+            }
+        }
+    }
+
+    .ant-select-tree-node-content-wrapper:not(.ant-select-tree-node-selected) {
+        &:hover {
+            background-color: transparent !important;
+        }
+    }
+
+    .ant-select-tree-list-holder-inner {
+        gap: 4px;
+    }
+
+    .ant-select-tree-treenode:not(.ant-select-tree-treenode-selected) {
+        width: 100%;
+        // background-color: #F2F2F2 !important;
+
+        .ant-select-tree-node-content-wrapper {
+            background-color: transparent !important;
+
+            .ant-select-tree-title>div>svg {
+                display: none;
+            }
+        }
+
+        &:hover {
+            background-color: #F2F2F2 !important;
+        }
+    }
+}

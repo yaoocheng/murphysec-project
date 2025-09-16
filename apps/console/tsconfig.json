@@ -1,0 +1,53 @@
+{
+    "compilerOptions": {
+        "skipLibCheck": true,
+        "typeRoots": [
+            "node_modules/@types", // 默认值
+        ],
+        "types": ["vite/client"],
+        "target": "esnext",
+        "useDefineForClassFields": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "composite": true,
+        "strict": true,
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "jsx": "preserve",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "ast/*": [
+                "src/assets/*"
+            ],
+            "view/*": [
+                "src/view/*"
+            ],
+            "comp/*": [
+                "src/components/*"
+            ],
+            "util/*": [
+                "src/utils/*"
+            ],
+            "page/*": [
+                "src/page/*"
+            ],
+            "api/*": [
+                "src/api/*"
+            ],
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "*.d.ts",
+        "src/**/*.vue",
+        "vite.config.ts"
+    ]
+}
